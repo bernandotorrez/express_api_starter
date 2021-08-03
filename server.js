@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 const express = require('express');
-const path = require('path');
 const logger = require('morgan');
 //const createError = require('http-errors');
 const helmet = require('helmet');
@@ -26,7 +25,6 @@ app.use(express.urlencoded({
     extended: true
 }));
 app.use(bearerToken());
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors())
 

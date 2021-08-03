@@ -11,13 +11,13 @@ class TaskRepository {
     }
 
     async getTask({ id = '' }) {
-        if(id != '') {
-            return await this._model.findOne({
-                where: { id: id },
-            })
-        } else {
+        if(id == '') {
             throw new Error('ID not provided');
         }
+
+        return await this._model.findOne({
+            where: { id: id },
+        })
     }
 }
 

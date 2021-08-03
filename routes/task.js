@@ -11,7 +11,6 @@ const CacheRepository = require('../repositories/redis/cacheRepository');
 const cacheRepository = new CacheRepository();
 
 router.get('/', async (req, res) => {
-
    try {
       const tasks = await cacheRepository.get('task:all');
 
@@ -31,13 +30,19 @@ router.get('/:id', async (req, res) => {
       id
    } = req.params;
 
-   const tasks = await taskRepository.getTask({
-      id
-   });
+   try {
+      const tasks = await cacheRepository.get(`task:${id}`);
 
-   await cacheRepository.set(`task:${id}`, JSON.stringify(tasks));
-
-   res.status(httpStatus.OK).send(tasks);
+      res.status(httpStatus.OK).send(JSON.parse(tasks));
+   } catch (error) {
+      const tasks = await taskRepository.getTask({
+         id
+      });
+   
+      await cacheRepository.set(`task:${id}`, JSON.stringify(tasks));
+   
+      res.status(httpStatus.OK).send(tasks);
+   }
 })
 
 module.exports = router;
