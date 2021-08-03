@@ -14,7 +14,7 @@ const compression = require('compression');
 // const jwt = require('jsonwebtoken');
 
 // setiap membuat file router baru, silahkan panggil disini
-const taskRouter = require('./routes/task');
+const taskRouterV1 = require('./routes/v1/task');
 
 const app = express();
 
@@ -39,7 +39,7 @@ if (!process.env.JWT_PRIVATE_KEY) {
 }
 
 // setiap ada penambahan Router, inisialisasi index nya disini
-app.use('/task', taskRouter);
+app.use('/v1/task', taskRouterV1);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {

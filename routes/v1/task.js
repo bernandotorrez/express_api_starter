@@ -4,10 +4,10 @@ const router = express.Router();
 const httpStatus = require('http-status');
 
 // Repositories
-const TaskRepository = require('../repositories/mysql/taskRepository');
+const TaskRepository = require('../../repositories/mysql/taskRepository');
 const taskRepository = new TaskRepository();
 
-const CacheRepository = require('../repositories/redis/cacheRepository');
+const CacheRepository = require('../../repositories/redis/cacheRepository');
 const cacheRepository = new CacheRepository();
 
 router.get('/', async (req, res) => {
