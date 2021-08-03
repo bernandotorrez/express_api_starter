@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
@@ -9,8 +11,7 @@ const bearerToken = require('express-bearer-token');
 const appRoot = require('app-root-path');
 const cors = require('cors')
 const compression = require('compression');
-const dotenv = require('dotenv');
-dotenv.config()
+
 // const jwt = require('jsonwebtoken');
 
 // setiap membuat file router baru, silahkan panggil disini

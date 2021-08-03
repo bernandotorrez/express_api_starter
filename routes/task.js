@@ -7,16 +7,36 @@ const httpStatus = require('http-status');
 const TaskRepository = require('../repositories/mysql/taskRepository');
 const taskRepository = new TaskRepository();
 
-router.get('/', async (req, res) => {
-   const tasks = await taskRepository.getTasks();
+const CacheRepository = require('../repositories/redis/cacheRepository');
+const cacheRepository = new CacheRepository();
 
-   res.status(httpStatus.OK).send(tasks);
+router.get('/', async (req, res) => {
+
+   try {
+      const tasks = await cacheRepository.get('task:all');
+
+      res.status(httpStatus.OK).send(JSON.parse(tasks));
+   } catch (err) {
+      const tasks = await taskRepository.getTasks();
+
+      await cacheRepository.set(`task:all`, JSON.stringify(tasks));
+
+      res.status(httpStatus.OK).send(tasks);
+   }
+
 })
 
-router.get('/:id', async(req, res) => {
-   const { id } = req.params;
+router.get('/:id', async (req, res) => {
+   const {
+      id
+   } = req.params;
 
-   const tasks = await taskRepository.getTask({ id });
+   const tasks = await taskRepository.getTask({
+      id
+   });
+
+   await cacheRepository.set(`task:${id}`, JSON.stringify(tasks));
+
    res.status(httpStatus.OK).send(tasks);
 })
 
