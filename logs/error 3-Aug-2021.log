@@ -1,0 +1,3 @@
+{"level":"error","message":"TypeError: Task.where is not a function","httpStatus":"500","ip":"::1","url":"/task/2","method":"GET","timestamp":"3-8-2021 12:43:1"}
+{"level":"error","message":"TypeError: taskRepository.getTasks is not a function","httpStatus":"500","ip":"::1","url":"/task","method":"GET","timestamp":"3-8-2021 12:53:56"}
+{"level":"error","message":"TypeError: taskRepository.getTasks is not a function","httpStatus":"500","ip":"::1","url":"/task","method":"GET","timestamp":"3-8-2021 12:54:31"}
