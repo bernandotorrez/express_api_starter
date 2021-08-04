@@ -81,7 +81,7 @@ router.delete('/:id', async (req, res) => {
    const { id } = req.params;
    
    try {
-      const task = await taskRepository.updateTask({ id, body: req.body })
+      const task = await taskRepository.deleteTask({ id })
 
       if(task) {
          await cacheRepository.delete(`task:${id}`);

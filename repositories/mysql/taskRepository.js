@@ -47,6 +47,18 @@ class TaskRepository {
             throw new Error('Update Task Failed');
         }
     }
+
+    async deleteTask({ id }) {
+        if(id === '') {
+            throw new Error('ID not Provided');
+        }
+        
+        try {
+            return this._model.delete({ where: { id: id } })
+        } catch (error) {
+            throw new Error('Delete Task Failed');
+        }
+    }
 }
 
 module.exports = TaskRepository;
