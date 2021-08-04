@@ -13,7 +13,8 @@ module.exports = {
         length: 100
       },
       status: {
-        type: Sequelize.ENUM('0', '1')
+        type: Sequelize.ENUM('0', '1'),
+        defaultValue: '0'
       },
       createdAt: {
         allowNull: false,

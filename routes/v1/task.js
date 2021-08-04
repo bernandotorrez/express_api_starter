@@ -1,4 +1,5 @@
 const express = require('express');
+const { route } = require('express/lib/router');
 require('express-async-errors');
 const router = express.Router();
 const httpStatus = require('http-status');
@@ -18,7 +19,7 @@ router.get('/', async (req, res) => {
    } catch (err) {
       const tasks = await taskRepository.getTasks();
 
-      await cacheRepository.set(`task:all`, JSON.stringify(tasks));
+      await cacheRepository.set(`task:all`, JSON.stringify(tasks), 60);
 
       res.status(httpStatus.OK).send(tasks);
    }
@@ -39,9 +40,24 @@ router.get('/:id', async (req, res) => {
          id
       });
    
-      await cacheRepository.set(`task:${id}`, JSON.stringify(tasks));
+      await cacheRepository.set(`task:${id}`, JSON.stringify(tasks), 60);
    
       res.status(httpStatus.OK).send(tasks);
+   }
+})
+
+router.post('/', async (req, res) => {
+   try {
+      console.log(req.body)
+      const task = await taskRepository.addTask(req.body);
+
+      if(task) {
+         await cacheRepository.delete(`task:all`);
+      }
+
+      res.status(httpStatus.CREATED).send('ok');
+   } catch (error) {
+      res.status(httpStatus.OK).send(error.message)
    }
 })
 

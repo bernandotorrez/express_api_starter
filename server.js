@@ -41,11 +41,6 @@ if (!process.env.JWT_PRIVATE_KEY) {
 // setiap ada penambahan Router, inisialisasi index nya disini
 app.use('/v1/task', taskRouterV1);
 
-// catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//     next(createError(404));
-//   });
-
 // error handler
 process.on('uncaughtException', (ex) => {
     const log_date = globalFunction.time_date();

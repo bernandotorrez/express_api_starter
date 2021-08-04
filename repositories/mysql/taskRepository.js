@@ -1,4 +1,3 @@
-require('express-async-errors');
 const { Task } = require('../../models')
 
 class TaskRepository {
@@ -18,6 +17,18 @@ class TaskRepository {
         return await this._model.findOne({
             where: { id: id },
         })
+    }
+
+    async addTask(params) {
+        const data = {
+            task: params.task
+        }
+
+        try {
+            return this._model.create(data)
+        } catch (error) {
+            throw new Error('Add Task Failed');
+        }
     }
 }
 
