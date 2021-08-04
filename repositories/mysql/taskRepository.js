@@ -30,6 +30,23 @@ class TaskRepository {
             throw new Error('Add Task Failed');
         }
     }
+
+    async updateTask({ id, body }) {
+        if(id === '') {
+            throw new Error('ID not Provided');
+        }
+
+        const data = {
+            task: body.task,
+            status: body.status
+        }
+        
+        try {
+            return this._model.update(data, { where: { id: id } })
+        } catch (error) {
+            throw new Error('Update Task Failed');
+        }
+    }
 }
 
 module.exports = TaskRepository;

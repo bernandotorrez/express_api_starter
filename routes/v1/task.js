@@ -48,7 +48,6 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
    try {
-      console.log(req.body)
       const task = await taskRepository.addTask(req.body);
 
       if(task) {
@@ -58,6 +57,39 @@ router.post('/', async (req, res) => {
       res.status(httpStatus.CREATED).send('ok');
    } catch (error) {
       res.status(httpStatus.OK).send(error.message)
+   }
+})
+
+router.put('/:id', async (req, res) => {
+   const { id } = req.params;
+   
+   try {
+      const task = await taskRepository.updateTask({ id, body: req.body })
+      console.log(task)
+
+      if(task) {
+         await cacheRepository.delete(`task:${id}`);
+      }
+
+      res.status(httpStatus.OK).send('ok')
+   } catch (error) {
+      res.status(httpStatus.OK).send(error.message);
+   }
+})
+
+router.delete('/:id', async (req, res) => {
+   const { id } = req.params;
+   
+   try {
+      const task = await taskRepository.updateTask({ id, body: req.body })
+
+      if(task) {
+         await cacheRepository.delete(`task:${id}`);
+      }
+
+      res.status(httpStatus.OK).send('ok')
+   } catch (error) {
+      res.status(httpStatus.OK).send(error.message);
    }
 })
 

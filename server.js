@@ -10,6 +10,7 @@ const bearerToken = require('express-bearer-token');
 const appRoot = require('app-root-path');
 const cors = require('cors')
 const compression = require('compression');
+const httpStatus = require('http-status');
 
 // const jwt = require('jsonwebtoken');
 
@@ -95,6 +96,11 @@ process.on('unhandledRejection', (ex) => {
 
     process.exit(1)
 })
+
+app.use(function (req, res, next) {
+    res.status(httpStatus.NOT_FOUND).send('not found');
+});
+
 
 app.use(function (err, req, res, next) {
     // set locals, only providing error in development
