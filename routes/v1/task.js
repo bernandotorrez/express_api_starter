@@ -56,7 +56,7 @@ router.post('/', async (req, res) => {
 
       res.status(httpStatus.CREATED).send('ok');
    } catch (error) {
-      res.status(httpStatus.OK).send(error.message)
+      res.status(httpStatus.OK).send({ error: error.message });
    }
 })
 
@@ -73,7 +73,7 @@ router.put('/:id', async (req, res) => {
 
       res.status(httpStatus.OK).send('ok')
    } catch (error) {
-      res.status(httpStatus.OK).send(error.message);
+      res.status(httpStatus.OK).send({ error: error.message });
    }
 })
 
@@ -84,12 +84,12 @@ router.delete('/:id', async (req, res) => {
       const task = await taskRepository.deleteTask({ id })
 
       if(task) {
-         await cacheRepository.delete(`task:${id}`);
+         await cacheRepository.delete(`task:all`);
       }
 
       res.status(httpStatus.OK).send('ok')
    } catch (error) {
-      res.status(httpStatus.OK).send(error.message);
+      res.status(httpStatus.OK).send({ error: error.message });
    }
 })
 
