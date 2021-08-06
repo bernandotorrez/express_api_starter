@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const express = require('express');
 const logger = require('morgan');
-//const createError = require('http-errors');
 const helmet = require('helmet');
 const winston = require('winston');
 const globalFunction = require('./utils/globalFunction');
@@ -98,7 +97,12 @@ process.on('unhandledRejection', (ex) => {
 })
 
 app.use(function (req, res, next) {
-    res.status(httpStatus.NOT_FOUND).send('not found');
+    res.status(httpStatus.NOT_FOUND).json({
+        code: httpStatus.NOT_FOUND,
+        status: 'ERROR',
+        message: httpStatus[`${httpStatus.NOT_FOUND}_NAME`],
+        data: null
+    });
 });
 
 
@@ -137,11 +141,13 @@ app.use(function (err, req, res, next) {
         // email: `${decoded._email}`,
         timestamp: globalFunction.log_time()
     });
+    
     // render the error page
-    res.status(err.status || 500).send({
-        'httpStatus': err.status || 500,
-        'message': err.message,
-        'data': null
+    res.status(err.status || httpStatus.INTERNAL_SERVER_ERROR).json({
+        code: err.status || httpStatus.INTERNAL_SERVER_ERROR,
+        status: 'ERROR',
+        message: err.message || httpStatus[`${httpStatus.INTERNAL_SERVER_ERROR}_NAME`],
+        data: null
     });
 });
 

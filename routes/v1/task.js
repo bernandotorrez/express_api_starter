@@ -15,13 +15,23 @@ router.get('/', async (req, res) => {
    try {
       const tasks = await cacheRepository.get('task:all');
 
-      res.status(httpStatus.OK).send(JSON.parse(tasks));
+      res.status(httpStatus.OK).json({
+         code: httpStatus.OK,
+         status: 'SUCCESS',
+         message: httpStatus[`${httpStatus.OK}_NAME`],
+         data: JSON.parse(tasks)
+      });
    } catch (err) {
       const tasks = await taskRepository.getTasks();
 
       await cacheRepository.set(`task:all`, JSON.stringify(tasks), 60);
 
-      res.status(httpStatus.OK).send(tasks);
+      res.status(httpStatus.OK).json({
+         code: httpStatus.OK,
+         status: 'SUCCESS',
+         message: httpStatus[`${httpStatus.OK}_NAME`],
+         data: tasks
+      });
    }
 
 })
@@ -34,7 +44,12 @@ router.get('/:id', async (req, res) => {
    try {
       const tasks = await cacheRepository.get(`task:${id}`);
 
-      res.status(httpStatus.OK).send(JSON.parse(tasks));
+      res.status(httpStatus.OK).json({
+         code: httpStatus.OK,
+         status: 'SUCCESS',
+         message: httpStatus[`${httpStatus.OK}_NAME`],
+         data: JSON.parse(tasks)
+      });
    } catch (error) {
       const tasks = await taskRepository.getTask({
          id
@@ -42,7 +57,12 @@ router.get('/:id', async (req, res) => {
    
       await cacheRepository.set(`task:${id}`, JSON.stringify(tasks), 60);
    
-      res.status(httpStatus.OK).send(tasks);
+      res.status(httpStatus.OK).json({
+         code: httpStatus.OK,
+         status: 'SUCCESS',
+         message: httpStatus[`${httpStatus.OK}_NAME`],
+         data: tasks
+      });
    }
 })
 
@@ -54,9 +74,19 @@ router.post('/', async (req, res) => {
          await cacheRepository.delete(`task:all`);
       }
 
-      res.status(httpStatus.CREATED).send('ok');
+      res.status(httpStatus.CREATED).json({
+         code: httpStatus.CREATED,
+         status: 'SUCCESS',
+         message: httpStatus[`${httpStatus.CREATED}_NAME`],
+         data: task
+      });
    } catch (error) {
-      res.status(httpStatus.OK).send({ error: error.message });
+      res.status(httpStatus.OK).json({
+         code: httpStatus.OK,
+         status: 'ERROR',
+         message: error.message,
+         data: []
+      });
    }
 })
 
@@ -65,15 +95,24 @@ router.put('/:id', async (req, res) => {
    
    try {
       const task = await taskRepository.updateTask({ id, body: req.body })
-      console.log(task)
 
       if(task) {
          await cacheRepository.delete(`task:${id}`);
       }
 
-      res.status(httpStatus.OK).send('ok')
+      res.status(httpStatus.CREATED).json({
+         code: httpStatus.CREATED,
+         status: 'SUCCESS',
+         message: httpStatus[`${httpStatus.CREATED}_NAME`],
+         data: task
+      });
    } catch (error) {
-      res.status(httpStatus.OK).send({ error: error.message });
+      res.status(httpStatus.OK).json({
+         code: httpStatus.OK,
+         status: 'ERROR',
+         message: error.message,
+         data: []
+      });
    }
 })
 
@@ -87,9 +126,19 @@ router.delete('/:id', async (req, res) => {
          await cacheRepository.delete(`task:all`);
       }
 
-      res.status(httpStatus.OK).send('ok')
+      res.status(httpStatus.OK).json({
+         code: httpStatus.OK,
+         status: 'SUCCESS',
+         message: httpStatus[`${httpStatus.OK}_NAME`],
+         data: task
+      });
    } catch (error) {
-      res.status(httpStatus.OK).send({ error: error.message });
+      res.status(httpStatus.NOT_FOUND).json({
+         code: httpStatus.NOT_FOUND,
+         status: 'ERROR',
+         message: error.message,
+         data: id
+      });
    }
 })
 

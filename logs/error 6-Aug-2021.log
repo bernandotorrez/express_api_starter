@@ -1,0 +1,18 @@
+{"level":"error","message":"SequelizeDatabaseError: Table 'express_api.tasks' doesn't exist","httpStatus":"500","ip":"::1","url":"/v1/task","method":"GET","timestamp":"6-8-2021 22:41:32"}
+{"level":"error","message":"TypeError: res.status(...).jsons is not a function","httpStatus":"500","ip":"::1","url":"/v1/taskas","method":"GET","timestamp":"6-8-2021 22:50:7"}
+{"level":"error","message":"TypeError: res.status(...).jsons is not a function","httpStatus":"500","ip":"::1","url":"/v1/taskas","method":"GET","timestamp":"6-8-2021 22:51:56"}
+{"level":"error","message":"TypeError: res.status(...).jsons is not a function","httpStatus":"500","ip":"::1","url":"/v1/taskas","method":"GET","timestamp":"6-8-2021 22:52:57"}
+{"level":"error","message":"TypeError: res.status(...).jsons is not a function","httpStatus":"500","ip":"::1","url":"/v1/taskas","method":"GET","timestamp":"6-8-2021 22:53:39"}
+{"level":"error","message":"TypeError: res.status(...).jsons is not a function","httpStatus":"500","ip":"::1","url":"/v1/taskas","method":"GET","timestamp":"6-8-2021 22:53:53"}
+{"level":"error","message":"TypeError: res.status(...).jsons is not a function","httpStatus":"500","ip":"::1","url":"/v1/taskas","method":"GET","timestamp":"6-8-2021 22:54:7"}
+{"level":"error","message":"TypeError: res.status(...).jsons is not a function","httpStatus":"500","ip":"::1","url":"/v1/taskas","method":"GET","timestamp":"6-8-2021 22:54:19"}
+{"level":"error","message":"TypeError: res.status(...).jsons is not a function","httpStatus":"500","ip":"::1","url":"/v1/taskas","method":"GET","timestamp":"6-8-2021 22:54:26"}
+{"level":"error","message":"TypeError: res.status(...).jsons is not a function","httpStatus":"500","ip":"::1","url":"/v1/taskas","method":"GET","timestamp":"6-8-2021 22:54:37"}
+{"level":"error","message":"TypeError: res.status(...).jsons is not a function","httpStatus":"500","ip":"::1","url":"/v1/taskas","method":"GET","timestamp":"6-8-2021 22:56:20"}
+{"level":"error","message":"ReferenceError: rres is not defined","httpStatus":"500","ip":"::1","url":"/v1/task","method":"GET","timestamp":"6-8-2021 22:58:22"}
+{"level":"error","message":"TypeError: res.status(...).jsons is not a function","httpStatus":"500","ip":"::1","url":"/v1/taskasd","method":"GET","timestamp":"6-8-2021 23:3:31"}
+{"level":"error","message":"ReferenceError: tasks is not defined","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"6-8-2021 23:7:6"}
+{"level":"error","message":"ReferenceError: tasks is not defined","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"6-8-2021 23:7:18"}
+{"level":"error","message":"ReferenceError: task is not defined","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"6-8-2021 23:12:22"}
+{"level":"error","message":"ReferenceError: task is not defined","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"6-8-2021 23:12:24"}
+{"level":"error","message":"RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: undefined","httpStatus":"500","ip":"::1","url":"/v1/task/1","method":"DELETE","timestamp":"6-8-2021 23:37:54"}

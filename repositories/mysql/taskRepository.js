@@ -54,7 +54,7 @@ class TaskRepository {
         }
         
         try {
-            return this._model.delete({ where: { id: id } })
+            return this._model.destroy({ where: { id: id } })
         } catch (error) {
             throw new Error('Delete Task Failed');
         }

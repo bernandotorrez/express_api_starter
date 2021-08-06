@@ -15,11 +15,14 @@ module.exports = (sequelize, DataTypes) => {
   };
   Task.init({
     task: DataTypes.STRING,
-    status: DataTypes.ENUM('0', '1')
+    status: DataTypes.ENUM('0', '1'),
   }, {
     sequelize,
     modelName: 'Task',
-    tableName: 'tasks'
+    tableName: 'tasks',
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
+    underscored: true
   });
   return Task;
 };
