@@ -1,5 +1,4 @@
 const express = require('express');
-const { route } = require('express/lib/router');
 require('express-async-errors');
 const router = express.Router();
 const httpStatus = require('http-status');
