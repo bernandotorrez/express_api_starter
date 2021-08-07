@@ -4,8 +4,9 @@ module.exports = function (handler) {
             await handler(req, res);
         } catch (err) {
             res.status(400).send({
-                'httpStatus': 400,
-                'message': err.name,
+                code: 400,
+                status: 'ERROR',
+                message: err.name,
                 data: null
             })
             next(err)
