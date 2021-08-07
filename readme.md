@@ -14,8 +14,9 @@ Included :
 Installation Instruction
 
 1. Install XAMPP / LAMPP
-2. Install Redis (for Linux) or Memurai (for Windows) (Server-Side Cache)
-3. Running Both XAMPP / LAMPP and Redis (if not, there will be error while running this Rest API)
+2. run "npm install"
+3. Install Redis (for Linux) or Memurai (for Windows) (Server-Side Cache)
+4. Running Both XAMPP / LAMPP and Redis (if not, there will be error while running this Rest API)
 
 Adding new Table also Model?
 1. run "npx sequelize-cli model:generate --name User --attributes [table field:table data type] (separates with comma)
