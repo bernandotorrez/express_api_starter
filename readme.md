@@ -17,4 +17,25 @@ Installation Instruction
 2. Install Redis (for Linux) or Memurai (for Windows) (Server-Side Cache)
 3. Running Both XAMPP / LAMPP and Redis (if not, there will be error while running this Rest API)
 
+Adding new Table also Model?
+1. run "npx sequelize-cli model:generate --name User --attributes [table field:table data type] (separates with comma)
+    -> example : "npx sequelize-cli model:generate --name User --attributes username:string,password:string,level:integer"
+2. Open migrations folder -> open new migration file
+3. Change the Table Name to lower case name in :
+    -> queryInterface.createTable('Users', to queryInterface.createTable('users'
+4. Change createdAt to created_at and updatedAt to updated_at
+5. Open model folder -> open new model file
+    -> change : 
+    sequelize,
+    modelName: 'Users',
+
+    -> to :
+    sequelize,
+    modelName: 'Users',
+    tableName: 'users',
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
+    underscored: true
+6. Run the migration "npx sequelize-cli db:migrate"
+
 Author : Bernand Dayamuntari Hermawan
