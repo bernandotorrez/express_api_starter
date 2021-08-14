@@ -40,11 +40,13 @@ router.post('/login', async (req, res) => {
 
         const user = await userRepository.login({ username, password });
 
+        const data = {
+            username: user.username,
+            level: user.level,
+        };
+
         const payload = {
-            data: {
-                user: user.username,
-                level: user.level,
-            },
+            data,
             exp: Math.floor(Date.now() / 1000) + (60 * 60),
         }
         
@@ -55,7 +57,7 @@ router.post('/login', async (req, res) => {
             code: httpStatus.OK,
             status: 'SUCCESS',
             message: httpStatus[`${httpStatus.OK}_NAME`],
-            data: user
+            data: data.username
          });
     } catch (error) {
         res.status(httpStatus.OK).json({
