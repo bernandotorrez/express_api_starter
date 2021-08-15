@@ -26,7 +26,6 @@ app.use(express.urlencoded({
     extended: true
 }));
 app.use(bearerToken());
-
 app.use(cors())
 
 // wajib saat naik ke production

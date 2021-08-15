@@ -3,6 +3,7 @@ require('express-async-errors');
 const router = express.Router();
 const httpStatus = require('http-status');
 const jwt = require('jsonwebtoken');
+const rateLimit = require('../../utils/rateLimiter');
 
 // Repositories
 const UserRepository = require('../../repositories/mysql/userRepository');
@@ -33,7 +34,7 @@ router.post('/register', async (req, res) => {
     }
 })
 
-router.post('/login', async (req, res) => {
+router.post('/login', rateLimit, async (req, res) => {
     const { username, password } = req.body;
 
     try {

@@ -1,0 +1,3 @@
+{"level":"error","message":"TypeError: options.client.multi is not a function","httpStatus":"500","ip":"::1","url":"/v1/auth/login","method":"POST","timestamp":"15-8-2021 16:46:6"}
+{"level":"error","message":"TypeError: options.client.multi is not a function","httpStatus":"500","ip":"::1","url":"/v1/auth/login","method":"POST","timestamp":"15-8-2021 16:46:7"}
+{"level":"error","message":"TypeError: options.client.multi is not a function","httpStatus":"500","ip":"::1","url":"/v1/auth/login","method":"POST","timestamp":"15-8-2021 16:46:9"}
