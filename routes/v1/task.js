@@ -14,6 +14,9 @@ const rabbitMq = require('../../repositories/messageBroker/rabbitmqRepository');
 
 const taskValidator = require('../../validators/taskValidator');
 
+// Rabbit MQ Example
+// await rabbitMq.sendMessage(`export:task:${id}`, JSON.stringify(tasks));
+
 router.get('/', async (req, res) => {
    try {
       const tasks = await cacheRepository.get('task:all');
@@ -44,12 +47,6 @@ router.get('/:id', async (req, res) => {
       id
    } = req.params;
 
-   // await rabbitMq.sendMessage(`export:task:${id}`, JSON.stringify({ 
-   //    id: id,
-   //    task: 'tes',
-   //    status: 0
-   // }));
-
    try {
       const tasks = await cacheRepository.get(`task:${id}`);
 
@@ -77,7 +74,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
    taskValidator.AddTaskValidator(req.body);
-   
+
    try {
       const task = await taskRepository.addTask(req.body);
 
