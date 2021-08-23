@@ -1,0 +1,11 @@
+{"level":"error","message":"TypeError: error is not a constructor","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 10:45:32"}
+{"level":"error","message":"Error: \"task\" is required","httpStatus":"500","ip":"::ffff:127.0.0.1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 10:49:37"}
+{"level":"error","message":"Error: \"task\" is required","httpStatus":"500","ip":"::ffff:127.0.0.1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 10:49:54"}
+{"level":"error","message":"Error: \"task\" is required","httpStatus":"500","ip":"::ffff:127.0.0.1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 10:50:8"}
+{"level":"error","message":"Error: \"task\" is required","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 10:50:21"}
+{"level":"error","message":"Error: \"task\" is required","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 10:50:23"}
+{"level":"error","message":"Error: \"task\" is required","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 10:50:30"}
+{"level":"error","message":"Error: \"task\" is required","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 10:50:42"}
+{"level":"error","message":"Error: \"task\" is required","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 10:50:52"}
+{"level":"error","message":"Error: ValidationError: \"task\" is required","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 10:51:14"}
+{"level":"error","message":"Error: \"task\" is required","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 10:53:26"}

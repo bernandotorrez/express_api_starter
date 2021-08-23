@@ -136,7 +136,7 @@ app.use(function (err, req, res, next) {
     logFile.log({
         level: 'error',
         message: `${err}`,
-        httpStatus: `${err.status || 500}`,
+        httpStatus: `${err.status || httpStatus.INTERNAL_SERVER_ERROR}`,
         ip: `${req.ip}`,
         url: `${req.originalUrl}`,
         method: `${req.method}`,

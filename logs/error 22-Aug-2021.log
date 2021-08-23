@@ -1,0 +1,1 @@
+{"level":"error","message":"SequelizeConnectionRefusedError: connect ECONNREFUSED 127.0.0.1:3306","httpStatus":"500","ip":"::1","url":"/v1/task","method":"GET","timestamp":"22-8-2021 16:49:16"}
