@@ -9,3 +9,12 @@
 {"level":"error","message":"Error: \"task\" is required","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 10:50:52"}
 {"level":"error","message":"Error: ValidationError: \"task\" is required","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 10:51:14"}
 {"level":"error","message":"Error: \"task\" is required","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 10:53:26"}
+{"level":"error","message":"Error: [object Object]","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 14:48:57"}
+{"level":"error","message":"Error: [object Object]","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 14:49:46"}
+{"level":"error","message":"Error: [object Object]","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 14:50:4"}
+{"level":"error","message":"ClientError: \"task\" is required","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 15:0:51"}
+{"level":"error","message":"ClientError: \"task\" is required","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 15:1:51"}
+{"level":"error","message":"ClientError: \"task\" is required","httpStatus":"500","ip":"::ffff:127.0.0.1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 15:2:16"}
+{"level":"error","message":"ClientError: \"task\" is required","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 15:2:39"}
+{"level":"error","message":"ClientError: \"task\" is required","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 15:2:41"}
+{"level":"error","message":"BadRequestError: \"task\" is required","httpStatus":"500","ip":"::1","url":"/v1/task","method":"POST","timestamp":"23-8-2021 15:4:40"}

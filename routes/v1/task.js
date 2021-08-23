@@ -76,8 +76,9 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
+   taskValidator.AddTaskValidator(req.body);
+   
    try {
-      taskValidator.AddTaskValidator(req.body);
       const task = await taskRepository.addTask(req.body);
 
       if(task) {

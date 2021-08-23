@@ -145,8 +145,8 @@ app.use(function (err, req, res, next) {
     });
     
     // render the error page
-    res.status(err.status || httpStatus.INTERNAL_SERVER_ERROR).json({
-        code: err.status || httpStatus.INTERNAL_SERVER_ERROR,
+    res.status(err.statusCode || httpStatus.INTERNAL_SERVER_ERROR).json({
+        code: err.statusCode || httpStatus.INTERNAL_SERVER_ERROR,
         status: 'ERROR',
         message: err.message || httpStatus[`${httpStatus.INTERNAL_SERVER_ERROR}_NAME`],
         data: null
