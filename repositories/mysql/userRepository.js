@@ -2,6 +2,7 @@ const {
     User
 } = require('../../models');
 const bcrypt = require('bcrypt');
+const InvariantError = require('../../exceptions/InvariantError');
 
 class UserRepository {
     constructor() {
@@ -20,13 +21,13 @@ class UserRepository {
         });
 
         if (!user || user == null) {
-            throw new Error('Username not found');
+            throw new InvariantError('Username not found');
         }
 
         const match = await bcrypt.compare(password, user.password);
 
         if (!match) {
-            throw new Error('Username or Password is Incorrect');
+            throw new InvariantError('Username or Password is Incorrect');
         }
 
         return user;
@@ -47,7 +48,7 @@ class UserRepository {
 
             return user;
         } catch (error) {
-            throw new Error('Failed Register User');
+            throw new InvariantError('Failed Register User');
         }
 
     }

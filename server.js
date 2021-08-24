@@ -132,11 +132,11 @@ app.use(function (err, req, res, next) {
 
     // uncomment when use JWT
     // const decoded = jwt.verify(req.header('X-Auth-Token'), process.env.JWT_PRIVATE_KEY);
-
+    
     logFile.log({
         level: 'error',
         message: `${err}`,
-        httpStatus: `${err.status || httpStatus.INTERNAL_SERVER_ERROR}`,
+        httpStatus: `${err.statusCode || httpStatus.INTERNAL_SERVER_ERROR}`,
         ip: `${req.ip}`,
         url: `${req.originalUrl}`,
         method: `${req.method}`,

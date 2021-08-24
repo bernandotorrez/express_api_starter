@@ -1,4 +1,5 @@
-const { Task } = require('../../models')
+const { Task } = require('../../models');
+const InvariantError = require('../../exceptions/InvariantError');
 
 class TaskRepository {
     constructor() {
@@ -11,7 +12,7 @@ class TaskRepository {
 
     async getTask({ id = '' }) {
         if(id == '') {
-            throw new Error('ID not provided');
+            throw new InvariantError('ID not provided');
         }
 
         return await this._model.findOne({
@@ -27,13 +28,13 @@ class TaskRepository {
         try {
             return this._model.create(data)
         } catch (error) {
-            throw new Error('Add Task Failed');
+            throw new InvariantError('Add Task Failed');
         }
     }
 
     async updateTask({ id, body }) {
         if(id === '') {
-            throw new Error('ID not Provided');
+            throw new InvariantError('ID not Provided');
         }
 
         const data = {
@@ -44,19 +45,19 @@ class TaskRepository {
         try {
             return this._model.update(data, { where: { id: id } })
         } catch (error) {
-            throw new Error('Update Task Failed');
+            throw new InvariantError('Update Task Failed');
         }
     }
 
     async deleteTask({ id }) {
         if(id === '') {
-            throw new Error('ID not Provided');
+            throw new InvariantError('ID not Provided');
         }
         
         try {
             return this._model.destroy({ where: { id: id } })
         } catch (error) {
-            throw new Error('Delete Task Failed');
+            throw new InvariantError('Delete Task Failed');
         }
     }
 }

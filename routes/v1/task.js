@@ -106,6 +106,7 @@ router.put('/:id', async (req, res) => {
 
       if(task) {
          await cacheRepository.delete(`task:${id}`);
+         await cacheRepository.delete(`task:all`);
       }
 
       res.status(httpStatus.CREATED).json({
