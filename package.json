@@ -1,11 +1,13 @@
 {
-  "name": "express_api",
+  "name": "task_service",
   "version": "1.0.0",
-  "description": "REST API with Express JS",
+  "description": "Microservice - Task Service",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pm2:dev": "SET NODE_ENV=development&& pm2 start server.js -i 1 --name task-service",
+    "pm2:prod": "SET NODE_ENV=production&& pm2 start server.js -i max --name task-service",
+    "test": "jest --forceExit"
   },
   "keywords": [
     "node",
@@ -47,7 +49,9 @@
   },
   "devDependencies": {
     "babel-register": "^6.26.0",
+    "jest": "^27.1.0",
     "nodemon": "^2.0.12",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "supertest": "^6.1.6"
   }
 }

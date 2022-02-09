@@ -1,13 +1,24 @@
 const { Task } = require('../../models');
 const InvariantError = require('../../exceptions/InvariantError');
+const NotFoundError = require('../../exceptions/NotFoundError');
+const { Op } = require('sequelize');
 
 class TaskRepository {
     constructor() {
         this._model = Task;
     }
 
-    async getTasks() {
-        return await this._model.findAll()
+    async getTasks({ task = ''}) {
+        if(task) {
+            return await this._model.findAll({ 
+                where: {
+                    task: { [Op.substring]: task }
+                }
+             });
+        } else {
+            return await this._model.findAll()
+        }
+        
     }
 
     async getTask({ id = '' }) {
@@ -15,9 +26,15 @@ class TaskRepository {
             throw new InvariantError('ID not provided');
         }
 
-        return await this._model.findOne({
+        const task = await this._model.findOne({
             where: { id: id },
         })
+
+        if(!task) {
+            throw new NotFoundError('Task not found');
+        }
+
+        return task;
     }
 
     async addTask(params) {
@@ -37,6 +54,11 @@ class TaskRepository {
             throw new InvariantError('ID not Provided');
         }
 
+        const task = await this._model.findOne({ where: { id: id }});
+        if(!task) {
+            throw new NotFoundError('Task not found');
+        }
+
         const data = {
             task: body.task,
             status: body.status
@@ -52,6 +74,11 @@ class TaskRepository {
     async deleteTask({ id }) {
         if(id === '') {
             throw new InvariantError('ID not Provided');
+        }
+
+        const task = await this._model.findOne({ where: { id: id }});
+        if(!task) {
+            throw new NotFoundError('Task not found');
         }
         
         try {

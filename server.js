@@ -11,11 +11,13 @@ const cors = require('cors')
 const compression = require('compression');
 const httpStatus = require('http-status');
 
+// Middleware
+const authMiddleware = require('./middleware/auth');
+
 // const jwt = require('jsonwebtoken');
 
 // setiap membuat file router baru, silahkan panggil disini
 const taskRouterV1 = require('./routes/v1/task');
-const authRouterV1 = require('./routes/v1/authentication');
 
 const app = express();
 
@@ -29,7 +31,6 @@ app.use(bearerToken());
 app.use(cors())
 
 // wajib saat naik ke production
-console.log(process.env.NODE_ENV)
 if (process.env.NODE_ENV == 'production') {
     app.use(helmet());
 }
@@ -41,7 +42,6 @@ if (!process.env.JWT_PRIVATE_KEY) {
 
 // setiap ada penambahan Router, inisialisasi index nya disini
 app.use('/v1/task', taskRouterV1);
-app.use('/v1/auth', authRouterV1);
 
 // error handler
 process.on('uncaughtException', (ex) => {
@@ -67,6 +67,8 @@ process.on('uncaughtException', (ex) => {
         message: `uncaughtException : ${ex.message}`,
         timestamp: globalFunction.log_time()
     });
+
+    console.log(ex)
 
     process.exit(1)
 })
@@ -94,6 +96,8 @@ process.on('unhandledRejection', (ex) => {
         message: `unhandledRejection : ${ex}`,
         timestamp: globalFunction.log_time()
     });
+
+    console.log(ex)
 
     process.exit(1)
 })
